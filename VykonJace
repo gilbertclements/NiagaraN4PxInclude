@@ -12,13 +12,13 @@
 <content>
 <CanvasPane viewSize="64.0,39.0" scale="fitRatio">
 
-  <BoundLabel layout="0.0,0.0,65.0,40.0" font="bold 10.0pt Tahoma" background="linearGradient( angle(90.0) stop(0.0% #404040) stop(30.0% #404040) stop(30.1% #606060) stop(70.0% #606060) stop(70.1% #404040) stop(100.0% #606060) )" valign="top">
+  <BoundLabel layout="0.0,0.0,65.0,40.0" font="bold 10.0pt Tahoma" background="linearGradient( angle(90.0) stop(0.0% #404040) stop(29.0% #404040) stop(30.0% #606060) stop(70.0% #606060) stop(71.0% #404040) stop(100.0% #606060) )" valign="top">
     <WsAnnotation name="wsAnnotation" value="2,2,8"/>
     <ToolTipBinding ord="station:|slot:/Services/PlatformServices/SystemService" toolTip="N4 Version: %niagaraVersion%&#xa;%stationName%: %host% &#xa;Low Memory %lowMemory%: %freePhysicalMemory% KB Free of %totalPhysicalMemory% KB Total&#xa;Low Heap %lowHeap%: %freeHeap% Mb Free of %maxHeap% MB Max&#xa;Low RAM Space %lowRamDiskSpace%: %minFreeRamDiskPercentage% of %ramDiskSize% MB&#xa;Low Disk Space %lowDiskSpace%: %currentCpuUsage% Current &amp; %overallCpuUsage% Overall"/>
     <BoundLabelBinding ord="station:|slot:/Services/PlatformServices" hyperlink="station:|slot:/Services/PlatformServices"/>
   </BoundLabel>
 
-  <BoundLabel layout="0.0,0.0,20.0,40.0" text="JACE" font="bold 8.0pt Tahoma" foreground="white" background="linearGradient( angle(90.0) stop(0.0% #1c67a6) stop(30.0% #1c67a6) stop(30.1% #2488db) stop(70.0% #2488db) stop(70.1% #1769ad) stop(100.0% #2488db) )">
+  <BoundLabel layout="0.0,0.0,20.0,40.0" text="JACE" font="bold 8.0pt Tahoma" foreground="white" background="linearGradient( angle(90.0) stop(0.0% #1c67a6) stop(29.0% #1c67a6) stop(30.0% #2488db) stop(70.0% #2488db) stop(71.0% #1769ad) stop(100.0% #2488db) )">
     <WsAnnotation name="wsAnnotation" value="2,2,8"/>
     <ToolTipBinding ord="station:|slot:/Services/PlatformServices/SystemService" toolTip="N4 Version: %niagaraVersion%&#xa;%stationName%: %host% &#xa;Low Memory %lowMemory%: %freePhysicalMemory% KB Free of %totalPhysicalMemory% KB Total&#xa;Low Heap %lowHeap%: %freeHeap% Mb Free of %maxHeap% MB Max&#xa;Low RAM Space %lowRamDiskSpace%: %minFreeRamDiskPercentage% of %ramDiskSize% MB&#xa;Low Disk Space %lowDiskSpace%: %currentCpuUsage% Current &amp; %overallCpuUsage% Overall"/>
     <ValueBinding ord="station:|slot:/Services/PlatformServices" hyperlink="station:|slot:/Services/PlatformServices"/>
@@ -67,13 +67,12 @@
 
   <BoundLabel layout="22.0,25.0,4.0,2.0" font="bold 8.0pt Tahoma" foreground="white" halign="left">
     <WsAnnotation name="wsAnnotation" value="2,2,8"/>
-    <ValueBinding ord="station:|slot:/Drivers/NiagaraNetwork/health/down">
+    <ValueBinding ord="station:|slot:/Drivers/BacnetNetwork/health/down">
       <IBooleanToSimple name="background">
         <Brush name="trueValue" value="red"/>
         <Brush name="falseValue" value="lime"/>
       </IBooleanToSimple>
     </ValueBinding>
-    <ToolTipBinding ord="station:|slot:/Drivers/NiagaraNetwork" toolTip="%displayName%: %health%"/>
   </BoundLabel>
 
   <BoundLabel layout="43.0,25.0,4.0,2.0" font="bold 8.0pt Tahoma" foreground="white" halign="left">
@@ -121,18 +120,16 @@
         <Brush name="falseValue" value="lime"/>
       </IBooleanToSimple>
     </ValueBinding>
-    <ToolTipBinding ord="station:|slot:/Drivers/BacnetNetwork" toolTip="%displayName%: %health%"/>
   </BoundLabel>
 
   <BoundLabel layout="22.0,15.0,4.0,2.0" font="bold 8.0pt Tahoma" foreground="white" halign="left">
     <WsAnnotation name="wsAnnotation" value="2,2,8"/>
-    <ValueBinding ord="station:|slot:/Drivers/NiagaraNetwork/enabled">
+    <ValueBinding ord="station:|slot:/Drivers/BacnetNetwork/enabled">
       <IBooleanToSimple name="background">
-        <Brush name="trueValue" value="red"/>
-        <Brush name="falseValue" value="lime"/>
+        <Brush name="trueValue" value="lime"/>
+        <Brush name="falseValue" value="red"/>
       </IBooleanToSimple>
     </ValueBinding>
-    <ToolTipBinding ord="station:|slot:/Drivers/NiagaraNetwork" toolTip="%displayName%: %health%"/>
   </BoundLabel>
 
 </CanvasPane>
