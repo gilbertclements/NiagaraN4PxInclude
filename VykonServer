@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Niagara Presentation XML -->
+<px version="1.0" media="workbench:WbPxMedia">
+<import>
+  <module name="baja"/>
+  <module name="bajaui"/>
+  <module name="converters"/>
+  <module name="gx"/>
+  <module name="kitPx"/>
+  <module name="vykonPro"/>
+</import>
+<content>
+<CanvasPane viewSize="64.0,39.0" scale="fitRatio">
+
+  <BoundLabel layout="0.0,0.0,65.0,40.0" font="bold 10.0pt Tahoma" background="linearGradient( angle(90.0) stop(0.0% #404040) stop(30.0% #404040) stop(30.1% #606060) stop(70.0% #606060) stop(70.1% #404040) stop(100.0% #606060) )">
+    <WsAnnotation name="wsAnnotation" value="2,2,8"/>
+    <BoundLabelBinding ord="station:|slot:/stationName" hyperlink="station:|slot:/Services/PlatformServices">
+      <ObjectToString name="text"/>
+    </BoundLabelBinding>
+    <ToolTipBinding ord="station:|slot:/Services/PlatformServices/SystemService" toolTip="N4 Version: %niagaraVersion%&#xa;%systemTime%&#xa;%stationName%: %host%&#xa;Memory %freePhysicalMemory% KB Free of %totalPhysicalMemory% KB Total&#xa;C:/ %filesystemAttributes.C$3a$5c.freeSpace% KB Free of %filesystemAttributes.C$3a$5c.totalSpace% KB Total&#xa;"/>
+  </BoundLabel>
+
+  <BoundLabel layout="33.0,15.0,4.0,2.0" font="bold 8.0pt Tahoma" foreground="white" halign="left">
+    <WsAnnotation name="wsAnnotation" value="2,2,8"/>
+    <ValueBinding ord="station:|slot:/Services/PlatformServices/SystemService/freePhysicalMemory">
+      <INumericToSimple name="background" map="gx:Brush 1000000.0:4000000.0=#4040ff;4000000.0:8000000.0=lime;8000000.0:1.2E7=yellow;1.2E7:1.6E7=red;default=lime;"/>
+    </ValueBinding>
+  </BoundLabel>
+
+  <BoundLabel layout="38.0,15.0,4.0,2.0" font="bold 8.0pt Tahoma" foreground="white" halign="left">
+    <WsAnnotation name="wsAnnotation" value="2,2,8"/>
+    <ValueBinding ord="station:|slot:/Services/PlatformServices/SystemService/currentCpuUsage">
+      <INumericToSimple name="background" map="gx:Brush 1.0:4.0=#4040ff;4.0:8.0=lime;8.0:12.0=yellow;12.0:16.0=red;default=lime;"/>
+    </ValueBinding>
+  </BoundLabel>
+
+  <BoundLabel layout="43.0,15.0,4.0,2.0" font="bold 8.0pt Tahoma" foreground="white" halign="left">
+    <WsAnnotation name="wsAnnotation" value="2,2,8"/>
+    <ValueBinding ord="station:|slot:/Services/PlatformServices/SystemService/overallCpuUsage">
+      <INumericToSimple name="background" map="gx:Brush 1.0:4.0=#4040ff;4.0:8.0=lime;8.0:12.0=yellow;12.0:16.0=red;default=lime;"/>
+    </ValueBinding>
+  </BoundLabel>
+
+  <BoundLabel layout="48.0,15.0,4.0,2.0" font="bold 8.0pt Tahoma" foreground="white" halign="left">
+    <WsAnnotation name="wsAnnotation" value="2,2,8"/>
+    <ValueBinding ord="station:|slot:/Services/PlatformServices/SystemService/filesystemAttributes/C$3a$5c/freeSpace">
+      <INumericToSimple name="background" map="gx:Brush 1000000.0:1.0E7=#4040ff;1.0E7:2.0E7=lime;2.0E7:3.2E8=yellow;3.2E8:4.6E8=red;default=lime;"/>
+    </ValueBinding>
+  </BoundLabel>
+
+  <BoundLabel layout="43.0,25.0,4.0,2.0" font="bold 8.0pt Tahoma" foreground="white" halign="left">
+    <WsAnnotation name="wsAnnotation" value="2,2,8"/>
+    <ValueBinding ord="station:|slot:/Services/WebService/status">
+      <ActiveStateSimple name="background">
+        <Brush name="activeState" value="red"/>
+        <Brush name="inactiveState" value="lime"/>
+      </ActiveStateSimple>
+    </ValueBinding>
+  </BoundLabel>
+
+  <BoundLabel layout="48.0,25.0,4.0,2.0" font="bold 8.0pt Tahoma" foreground="white" halign="left">
+    <WsAnnotation name="wsAnnotation" value="2,2,8"/>
+    <ValueBinding ord="station:|slot:/Services/WebService/enabled">
+      <ActiveStateSimple name="background">
+        <Brush name="activeState" value="red"/>
+        <Brush name="inactiveState" value="lime"/>
+      </ActiveStateSimple>
+    </ValueBinding>
+  </BoundLabel>
+
+  <BoundLabel layout="25.0,25.0,4.0,2.0" font="bold 8.0pt Tahoma" foreground="white" halign="left">
+    <WsAnnotation name="wsAnnotation" value="2,2,8"/>
+    <ValueBinding ord="station:|slot:/Drivers/NiagaraNetwork/health/alarm">
+      <IBooleanToSimple name="background">
+        <Brush name="trueValue" value="red"/>
+        <Brush name="falseValue" value="lime"/>
+      </IBooleanToSimple>
+    </ValueBinding>
+  </BoundLabel>
+
+  <BoundLabel layout="20.0,25.0,4.0,2.0" font="bold 8.0pt Tahoma" foreground="white" halign="left">
+    <WsAnnotation name="wsAnnotation" value="2,2,8"/>
+    <ValueBinding ord="station:|slot:/Drivers/NiagaraNetwork/health/down">
+      <IBooleanToSimple name="background">
+        <Brush name="trueValue" value="red"/>
+        <Brush name="falseValue" value="lime"/>
+      </IBooleanToSimple>
+    </ValueBinding>
+  </BoundLabel>
+
+  <BoundLabel layout="20.0,15.0,4.0,2.0" font="bold 8.0pt Tahoma" foreground="white" halign="left">
+    <WsAnnotation name="wsAnnotation" value="2,2,8"/>
+    <ValueBinding ord="station:|slot:/Drivers/NiagaraNetwork/enabled">
+      <IBooleanToSimple name="background">
+        <Brush name="trueValue" value="lime"/>
+        <Brush name="falseValue" value="red"/>
+      </IBooleanToSimple>
+    </ValueBinding>
+  </BoundLabel>
+
+  <BoundLabel layout="53.0,25.0,4.0,2.0" font="bold 8.0pt Tahoma" foreground="white" halign="left">
+    <WsAnnotation name="wsAnnotation" value="2,2,8"/>
+    <ValueBinding ord="station:|slot:/Drivers/NiagaraNetwork/health/down">
+      <ActiveStateSimple name="background">
+        <Brush name="activeState" value="red"/>
+        <Brush name="inactiveState" value="lime"/>
+      </ActiveStateSimple>
+    </ValueBinding>
+  </BoundLabel>
+
+  <BoundLabel layout="58.0,25.0,4.0,2.0" font="bold 8.0pt Tahoma" foreground="white" halign="left">
+    <WsAnnotation name="wsAnnotation" value="2,2,8"/>
+    <ValueBinding ord="station:|slot:/Drivers/NiagaraNetwork/WESD/health/alarm">
+      <ActiveStateSimple name="background">
+        <Brush name="activeState" value="red"/>
+        <Brush name="inactiveState" value="lime"/>
+      </ActiveStateSimple>
+    </ValueBinding>
+  </BoundLabel>
+
+</CanvasPane>
+</content>
+</px>
