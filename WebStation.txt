@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Niagara Presentation XML -->
+<px version="1.0" media="workbench:WbPxMedia">
+<import>
+  <module name="baja"/>
+  <module name="bajaui"/>
+  <module name="converters"/>
+  <module name="gx"/>
+</import>
+<content>
+<ScrollPane>
+
+  <CanvasPane name="content" viewSize="50.0,30.0" scale="fitRatio" minScaleFactor="0.5" maxScaleFactor="1.0" background="linearGradient( angle(90.0) stop(0.0% #404040) stop(30.0% #606060) stop(30.1% #404040) stop(30.1% grey) stop(70.0% grey) stop(71.0% #606060) stop(100.0% grey) )">
+
+    <Label layout="0.0,0.0,20.0,30.0" text="JACE" font="bold 8.0pt SansSerif" foreground="white" background="linearGradient( angle(90.0) stop(0.0% maroon) stop(30.0% #c00000) stop(30.1% red) stop(70.1% red) stop(71.0% #c00000) stop(100.0% red) stop(100.0% grey) )">
+      <ValueBinding ord="station:|slot:/Services/PlatformServices/TcpIpService/settings/domain" summary="%.%"/>
+    </Label>
+
+    <Label layout="0.0,0.0,20.0,30.0" text="JACE" font="bold 8.0pt SansSerif" foreground="white" background="linearGradient( angle(90.0) stop(0.0% maroon) stop(30.0% #c00000) stop(30.1% red) stop(70.1% red) stop(71.0% #c00000) stop(100.0% red) stop(100.0% grey) )" halign="left">
+      <ValueBinding ord="station:|slot:/Drivers/NiagaraNetwork/Embry_Riddle_BMS" summary="%name% N%version% %address% %time()%"/>
+    </Label>
+
+    <Label layout="40.0,19.0,2.0,1.0" background="yellow"/>
+
+    <Label layout="37.0,19.0,2.0,1.0" background="lime"/>
+
+    <Label layout="46.0,19.0,2.0,1.0" background="yellow"/>
+
+    <Label layout="43.0,19.0,2.0,1.0" background="lime"/>
+
+    <Label layout="41.0,10.0,2.0,1.0">
+      <ValueBinding ord="station:|slot:/Services/PlatformServices/SystemService/currentCpuUsage">
+        <INumericToSimple name="background" map="gx:Brush 0.0:5.0=blue;5.0:20.0=lime;20.0:40.0=yellow;40.0:60.0=#ff8000;60.0:100.0=red;default=lime;"/>
+      </ValueBinding>
+    </Label>
+
+    <Label layout="38.0,10.0,2.0,1.0">
+      <ValueBinding ord="station:|slot:/Services/PlatformServices/SystemService/overallCpuUsage">
+        <INumericToSimple name="background" map="gx:Brush 0.0:10.0=blue;10.0:60.0=lime;60.0:70.0=yellow;70.0:80.0=#ff8000;80.0:100.0=red;default=lime;"/>
+      </ValueBinding>
+    </Label>
+
+    <Label layout="35.0,10.0,2.0,1.0">
+      <ValueBinding ord="station:|slot:/Services/PlatformServices/SystemService/freePhysicalMemory">
+        <INumericToSimple name="background" map="gx:Brush 0.0:1587180.0=blue;1587180.0:6587180.0=lime;6587180.0:9587180.0=yellow;9587180.0:1.258718E7=#ff8000;1.258718E7:1.658718E7=red;default=null;"/>
+      </ValueBinding>
+    </Label>
+
+    <Label layout="32.0,10.0,2.0,1.0">
+      <ValueBinding ord="station:|slot:/Services/PlatformServices/SystemService/totalPhysicalMemory">
+        <INumericToSimple name="background" map="gx:Brush 0.0:1000000.0=blue;1000000.0:1.0E7=lime;1.0E7:2.0E7=yellow;2.0E7:3.0E8=#ff8000;3.0E8:5.0E8=red;default=lime;"/>
+      </ValueBinding>
+    </Label>
+
+    <Label layout="22.0,11.0,2.0,1.0" font="bold 8.0pt SansSerif" foreground="white" halign="left">
+      <ValueBinding ord="$(Station)/enabled" summary="%.%">
+        <ActiveStateSimple name="background">
+          <Brush name="activeState" value="red"/>
+          <Brush name="inactiveState" value="lime"/>
+        </ActiveStateSimple>
+      </ValueBinding>
+    </Label>
+
+    <Label layout="22.0,19.0,2.0,1.0" font="bold 8.0pt SansSerif" foreground="white" halign="left">
+      <ValueBinding ord="$(Station)/health/down" summary="%.%">
+        <ActiveStateSimple name="background">
+          <Brush name="activeState" value="red"/>
+          <Brush name="inactiveState" value="lime"/>
+        </ActiveStateSimple>
+      </ValueBinding>
+    </Label>
+
+    <Label layout="25.0,19.0,2.0,1.0" font="bold 8.0pt SansSerif" foreground="white" halign="left">
+      <ValueBinding ord="$(Station)/health/alarm" summary="%.%">
+        <ActiveStateSimple name="background">
+          <Brush name="activeState" value="red"/>
+          <Brush name="inactiveState" value="lime"/>
+        </ActiveStateSimple>
+      </ValueBinding>
+    </Label>
+
+    <Label layout="22.0,10.0,2.0,1.0">
+      <ValueBinding ord="station:|slot:/Drivers/NiagaraNetwork/enabled">
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="lime"/>
+          <Brush name="falseValue" value="red"/>
+        </IBooleanToSimple>
+      </ValueBinding>
+    </Label>
+
+    <Label layout="22.0,19.0,2.0,1.0">
+      <ValueBinding ord="station:|slot:/Drivers/NiagaraNetwork/health/down">
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="red"/>
+          <Brush name="falseValue" value="lime"/>
+        </IBooleanToSimple>
+      </ValueBinding>
+    </Label>
+
+    <Label layout="25.0,19.0,2.0,1.0">
+      <ValueBinding ord="station:|slot:/Drivers/NiagaraNetwork/health/alarm">
+        <IBooleanToSimple name="background">
+          <Brush name="trueValue" value="red"/>
+          <Brush name="falseValue" value="lime"/>
+        </IBooleanToSimple>
+      </ValueBinding>
+    </Label>
+
+  </CanvasPane>
+
+</ScrollPane>
+</content>
+</px>
