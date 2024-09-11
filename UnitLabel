@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Vykon Unit Label Px Include, Gil Clements, 29Aug24 -->
+<!-- shows Label with Unit name, Temp/Temp setpoint, Occ status, system mode -->
+<px version="1.0" media="workbench:WbPxMedia">
+<import>
+  <module name="baja"/>
+  <module name="bajaui"/>
+  <module name="converters"/>
+  <module name="gx"/>
+  <module name="kitPx"/>
+</import>
+<content>
+<ScrollPane>
+
+  <CanvasPane name="content" viewSize="95.0,40.0" scale="fitRatio" minScaleFactor="0.5" maxScaleFactor="1.0">
+
+    <BoundLabel layout="0.0,0.0,95.0,20.0" font="bold 12.0pt SansSerif" foreground="white" background="linearGradient( angle(90.0) stop(0.0% black) stop(100.0% grey) )" textToIconAlign="center" border="top(1.0 outset black) right(1.0 outset black) left(1.0 outset black)">
+      <BoundLabelBinding ord="$(unit)" hyperlink="$(unit)" summary="%OccSts.out.value%, %SysMode.out.value%" statusEffect="color">
+        <ObjectToString name="text" format="%name%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="0.0,20.0,95.0,20.0" border="right(1.0 outset black) bottom(1.0 outset black) left(1.0 outset black)">
+      <BoundLabelBinding ord="$(unit)/SpTemp" degradeBehavior="hide" hyperlink="$(unit)/SpTemp|view:webChart:ChartWidget" summary="" statusEffect="color">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+      <SpectrumSetpointBinding ord="$(unit)/MedZoneSpt" degradeBehavior="hide"/>
+      <SpectrumBinding ord="$(unit)/SpTemp" degradeBehavior="hide" widgetProperty="background" setpoint="72.0" extent="10.0"/>
+    </BoundLabel>
+
+    <BoundLabel visible="false" layout="0.0,20.0,90.0,20.0" border="right(1.0 outset black) bottom(1.0 outset black) left(1.0 outset black)">
+      <BoundLabelBinding ord="$(unit)/ZnTemp" degradeBehavior="hide" hyperlink="$(unit)/ZnTemp|view:webChart:ChartWidget" summary="" statusEffect="color">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+      <SpectrumSetpointBinding ord="$(unit)/EffClgSt" degradeBehavior="hide"/>
+      <SpectrumBinding ord="$(unit)/ZnTemp" degradeBehavior="hide" widgetProperty="background" setpoint="72.0" extent="10.0"/>
+    </BoundLabel>
+
+    <BoundLabel visible="false" layout="0.0,20.0,90.0,20.0" border="right(1.0 outset black) bottom(1.0 outset black) left(1.0 outset black)">
+      <BoundLabelBinding ord="$(unit)/RmTemp" degradeBehavior="hide" hyperlink="$(unit)/RmTemp|view:webChart:ChartWidget" summary="" statusEffect="color">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+      <SpectrumSetpointBinding ord="$(unit)/MedZoneSpt" degradeBehavior="hide"/>
+      <SpectrumBinding ord="$(unit)/RmTemp" degradeBehavior="hide" widgetProperty="background" setpoint="72.0" extent="10.0"/>
+    </BoundLabel>
+
+  </CanvasPane>
+
+</ScrollPane>
+</content>
+</px>
