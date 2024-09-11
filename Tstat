@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Vykon N4 Tstat Px Include, Gil Clements, 29Aug24 -->
+<!-- shows Tstat with Unit name, Temp, warm/cold, Occ status, fan status, system mode -->
+<px version="1.0" media="workbench:WbPxMedia">
+<import>
+  <module name="baja"/>
+  <module name="bajaui"/>
+  <module name="converters"/>
+  <module name="gx"/>
+  <module name="kitPx"/>
+</import>
+<content>
+<ScrollPane>
+
+  <CanvasPane name="content" viewSize="195.0,75.0" scale="fitRatio" minScaleFactor="0.5" maxScaleFactor="1.0">
+
+    <BoundLabel layout="0.0,0.0,195.0,75.0" font="bold 12.0pt SansSerif" background="radialGradient( stop(20.0% #e0e0e0) stop(99.0% silver) stop(100.0% transparent) stop(100.0% transparent) )" valign="top" textToIconAlign="center" padding="5.0 0.0 0.0 0.0">
+      <BoundLabelBinding ord="$(unit)" hyperlink="$(unit)" summary="%OccSts.out.value%, %SysMode.out.value%" statusEffect="color">
+        <ObjectToString name="text" format="%name%"/>
+      </BoundLabelBinding>
+    </BoundLabel>
+
+    <BoundLabel layout="20.0,35.0,90.0,20.0" border="1.0 inset black">
+      <BoundLabelBinding ord="$(unit)/SpTemp" hyperlink="$(unit)/SpTemp|view:webChart:ChartWidget" summary="" statusEffect="color">
+        <ObjectToString name="text" format="%out.value%"/>
+      </BoundLabelBinding>
+      <SpectrumSetpointBinding ord="$(unit)/MedZoneSpt"/>
+      <SpectrumBinding ord="$(unit)/SpTemp" widgetProperty="background" setpoint="72.0" extent="10.0"/>
+    </BoundLabel>
+
+    <Label layout="35.0,55.0,20.0,20.0">
+      <ValueBinding ord="$(unit)/OccSts">
+        <IEnumToSimple name="image" map="gx:Image 3=module://icons/x16/door.png;4=module://icons/x16/asterisk.png;1=module://icons/x16/home.png;2=module://icons/x16/card.png;default=module://icons/x16/door.png;"/>
+      </ValueBinding>
+    </Label>
+
+    <Label layout="85.0,55.0,20.0,20.0">
+      <ValueBinding ord="$(unit)/SysMode">
+        <IEnumToSimple name="image" map="gx:Image 3=module://icons/x16/arrowDown.png;1=module://icons/x16/bullet.png;5=module://icons/x16/shapes/circleGold.png;4=module://icons/x16/arrowUp.png;2=module://icons/x16/shapes/diamondGray.png;default=module://icons/x16/shapes/circleGray.png;"/>
+      </ValueBinding>
+    </Label>
+
+    <Label layout="60.0,55.0,20.0,20.0">
+      <ValueBinding ord="$(unit)/FanSts">
+        <IBooleanToSimple name="image">
+          <Image name="trueValue" value="module://icons/x16/arrowRight.png"/>
+          <Image name="falseValue" value="module://icons/x16/bullet.png"/>
+        </IBooleanToSimple>
+      </ValueBinding>
+    </Label>
+
+    <Slider layout="125.0,35.0,50.0,20.0" min="-3.0" max="3.0" value="0.0">
+      <SetPointBinding ord="$(unit)/WCAdjust" widgetEvent="actionPerformed" widgetProperty="value">
+        <IStatusToBrush name="trackBrush"/>
+      </SetPointBinding>
+      <WsAnnotation name="wsAnnotation" value="54,54,8"/>
+    </Slider>
+
+  </CanvasPane>
+
+</ScrollPane>
+</content>
+</px>
