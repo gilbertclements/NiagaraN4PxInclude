@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Niagara Presentation XML -->
+<!-- Honeywell N4 JACE Px Include, Gil Clements, 9Sept24 -->
+<!-- shows JACE N4 version, station name, health -->
 <px version="1.0" media="workbench:WbPxMedia">
 <import>
   <module name="baja"/>
