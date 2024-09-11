@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Niagara Presentation XML -->
+<!-- Vykon N4 Station Px Include, Gil Clements, 29Aug24 -->
+<!-- shows JACE station name, system time, NiagaraNetwork status -->
 <px version="1.0" media="workbench:WbPxMedia">
 <import>
   <module name="baja"/>
@@ -14,35 +15,24 @@
 
   <BoundLabel layout="0.0,0.0,65.0,40.0" font="bold 10.0pt Tahoma" background="linearGradient( angle(90.0) stop(0.0% #404040) stop(29.0% #404040) stop(30.0% #606060) stop(70.0% #606060) stop(71.0% #404040) stop(100.0% #606060) )" valign="top">
     <WsAnnotation name="wsAnnotation" value="2,2,8"/>
-    <ToolTipBinding ord="station:|slot:/Services/PlatformServices/SystemService" toolTip="N4 Version: %niagaraVersion%&#xa;%stationName%: %host% &#xa;Low Memory %lowMemory%: %freePhysicalMemory% KB Free of %totalPhysicalMemory% KB Total&#xa;Low Heap %lowHeap%: %freeHeap% Mb Free of %maxHeap% MB Max&#xa;Low RAM Space %lowRamDiskSpace%: %minFreeRamDiskPercentage% of %ramDiskSize% MB&#xa;Low Disk Space %lowDiskSpace%: %currentCpuUsage% Current &amp; %overallCpuUsage% Overall"/>
-    <BoundLabelBinding ord="station:|slot:/Services/PlatformServices" hyperlink="station:|slot:/Services/PlatformServices"/>
+    <ToolTipBinding ord="$(station)" toolTip="%name%&#xa;ip: 172.21.96.12&#xa;%time()%"/>
   </BoundLabel>
 
   <BoundLabel layout="0.0,0.0,20.0,40.0" text="JACE" font="bold 8.0pt Tahoma" foreground="white" background="linearGradient( angle(90.0) stop(0.0% #1c67a6) stop(29.0% #1c67a6) stop(30.0% #2488db) stop(70.0% #2488db) stop(71.0% #1769ad) stop(100.0% #2488db) )">
     <WsAnnotation name="wsAnnotation" value="2,2,8"/>
-    <ToolTipBinding ord="station:|slot:/Services/PlatformServices/SystemService" toolTip="N4 Version: %niagaraVersion%&#xa;%stationName%: %host% &#xa;Low Memory %lowMemory%: %freePhysicalMemory% KB Free of %totalPhysicalMemory% KB Total&#xa;Low Heap %lowHeap%: %freeHeap% Mb Free of %maxHeap% MB Max&#xa;Low RAM Space %lowRamDiskSpace%: %minFreeRamDiskPercentage% of %ramDiskSize% MB&#xa;Low Disk Space %lowDiskSpace%: %currentCpuUsage% Current &amp; %overallCpuUsage% Overall"/>
-    <ValueBinding ord="station:|slot:/Services/PlatformServices" hyperlink="station:|slot:/Services/PlatformServices"/>
+    <ToolTipBinding ord="$(station)" toolTip="%name%&#xa;ip: 172.21.96.12&#xa;%time()%"/>
   </BoundLabel>
 
-  <BoundLabel layout="33.0,15.0,4.0,2.0" font="bold 8.0pt Tahoma" foreground="white" halign="left">
+  <BoundLabel layout="33.0,13.0,4.0,2.0" font="bold 8.0pt Tahoma" background="lime" halign="left">
     <WsAnnotation name="wsAnnotation" value="2,2,8"/>
-    <ValueBinding ord="station:|slot:/Services/PlatformServices/SystemService/freePhysicalMemory">
-      <INumericToSimple name="background" map="gx:Brush 1000000.0:4000000.0=#4040ff;4000000.0:8000000.0=lime;8000000.0:1.2E7=yellow;1.2E7:1.6E7=red;default=lime;"/>
-    </ValueBinding>
   </BoundLabel>
 
-  <BoundLabel layout="43.0,15.0,4.0,2.0" font="bold 8.0pt Tahoma" foreground="white" halign="left">
+  <BoundLabel layout="43.0,13.0,4.0,2.0" font="bold 8.0pt Tahoma" background="lime" halign="left">
     <WsAnnotation name="wsAnnotation" value="2,2,8"/>
-    <ValueBinding ord="station:|slot:/Services/PlatformServices/SystemService/currentCpuUsage">
-      <INumericToSimple name="background" map="gx:Brush 1.0:4.0=#4040ff;4.0:8.0=lime;8.0:12.0=yellow;12.0:16.0=red;default=lime;"/>
-    </ValueBinding>
   </BoundLabel>
 
-  <BoundLabel layout="48.0,15.0,4.0,2.0" font="bold 8.0pt Tahoma" foreground="white" halign="left">
+  <BoundLabel layout="48.0,13.0,4.0,2.0" font="bold 8.0pt Tahoma" background="yellow" halign="left">
     <WsAnnotation name="wsAnnotation" value="2,2,8"/>
-    <ValueBinding ord="station:|slot:/Services/PlatformServices/SystemService/overallCpuUsage">
-      <INumericToSimple name="background" map="gx:Brush 1.0:4.0=#4040ff;4.0:8.0=lime;8.0:12.0=yellow;12.0:16.0=red;default=lime;"/>
-    </ValueBinding>
   </BoundLabel>
 
   <BoundLabel layout="55.0,25.0,4.0,2.0" font="bold 8.0pt Tahoma" foreground="white" halign="left">
@@ -55,19 +45,9 @@
     </ValueBinding>
   </BoundLabel>
 
-  <BoundLabel layout="48.0,25.0,4.0,2.0" font="bold 8.0pt Tahoma" foreground="white" halign="left">
+  <BoundLabel layout="22.0,25.0,4.0,2.0" font="bold 8.0pt Tahoma" halign="left">
     <WsAnnotation name="wsAnnotation" value="2,2,8"/>
-    <ValueBinding ord="station:|slot:/Drivers/BacnetNetwork/bacnetComm/network/MstpPort1/enabled">
-      <ActiveStateSimple name="background">
-        <Brush name="activeState" value="red"/>
-        <Brush name="inactiveState" value="lime"/>
-      </ActiveStateSimple>
-    </ValueBinding>
-  </BoundLabel>
-
-  <BoundLabel layout="22.0,25.0,4.0,2.0" font="bold 8.0pt Tahoma" foreground="white" halign="left">
-    <WsAnnotation name="wsAnnotation" value="2,2,8"/>
-    <ValueBinding ord="station:|slot:/Drivers/BacnetNetwork/health/down">
+    <ValueBinding ord="station:|slot:/Drivers/NiagaraNetwork/health/down">
       <IBooleanToSimple name="background">
         <Brush name="trueValue" value="red"/>
         <Brush name="falseValue" value="lime"/>
@@ -75,46 +55,21 @@
     </ValueBinding>
   </BoundLabel>
 
-  <BoundLabel layout="43.0,25.0,4.0,2.0" font="bold 8.0pt Tahoma" foreground="white" halign="left">
+  <BoundLabel layout="43.0,25.0,4.0,2.0" font="bold 8.0pt Tahoma" background="lime" halign="left">
     <WsAnnotation name="wsAnnotation" value="2,2,8"/>
-    <ValueBinding ord="station:|slot:/Drivers/BacnetNetwork/bacnetComm/network/MstpPort1/status">
-      <ActiveStateSimple name="background">
-        <Brush name="activeState" value="red"/>
-        <Brush name="inactiveState" value="lime"/>
-      </ActiveStateSimple>
-    </ValueBinding>
   </BoundLabel>
 
-  <BoundLabel layout="58.0,25.0,4.0,2.0" font="bold 8.0pt Tahoma" foreground="white" halign="left">
+  <BoundLabel layout="58.0,25.0,4.0,2.0" font="bold 8.0pt Tahoma" background="yellow" halign="left">
     <WsAnnotation name="wsAnnotation" value="2,2,8"/>
-    <ValueBinding ord="station:|slot:/Drivers/BacnetNetwork/bacnetComm/network/MstpPort2/enabled">
-      <ActiveStateSimple name="background">
-        <Brush name="activeState" value="red"/>
-        <Brush name="inactiveState" value="lime"/>
-      </ActiveStateSimple>
-    </ValueBinding>
   </BoundLabel>
 
-  <BoundLabel layout="53.0,25.0,4.0,2.0" font="bold 8.0pt Tahoma" foreground="white" halign="left">
+  <BoundLabel layout="38.0,13.0,4.0,2.0" font="bold 8.0pt Tahoma" background="yellow" halign="left">
     <WsAnnotation name="wsAnnotation" value="2,2,8"/>
-    <ValueBinding ord="station:|slot:/Drivers/BacnetNetwork/bacnetComm/network/MstpPort2/status">
-      <ActiveStateSimple name="background">
-        <Brush name="activeState" value="red"/>
-        <Brush name="inactiveState" value="lime"/>
-      </ActiveStateSimple>
-    </ValueBinding>
   </BoundLabel>
 
-  <BoundLabel layout="38.0,15.0,4.0,2.0" font="bold 8.0pt Tahoma" foreground="white" halign="left">
+  <BoundLabel layout="27.0,25.0,4.0,2.0" font="bold 8.0pt Tahoma" halign="left">
     <WsAnnotation name="wsAnnotation" value="2,2,8"/>
-    <ValueBinding ord="station:|slot:/Services/PlatformServices/SystemService/totalPhysicalMemory">
-      <INumericToSimple name="background" map="gx:Brush 1000000.0:4000000.0=#4040ff;4000000.0:8000000.0=lime;8000000.0:1.2E7=yellow;1.2E7:1.6E7=red;default=lime;"/>
-    </ValueBinding>
-  </BoundLabel>
-
-  <BoundLabel layout="27.0,25.0,4.0,2.0" font="bold 8.0pt Tahoma" foreground="white" halign="left">
-    <WsAnnotation name="wsAnnotation" value="2,2,8"/>
-    <ValueBinding ord="station:|slot:/Drivers/BacnetNetwork/health/alarm">
+    <ValueBinding ord="station:|slot:/Drivers/NiagaraNetwork/health/alarm">
       <IBooleanToSimple name="background">
         <Brush name="trueValue" value="red"/>
         <Brush name="falseValue" value="lime"/>
@@ -122,14 +77,22 @@
     </ValueBinding>
   </BoundLabel>
 
-  <BoundLabel layout="22.0,15.0,4.0,2.0" font="bold 8.0pt Tahoma" foreground="white" halign="left">
+  <BoundLabel layout="22.0,13.0,4.0,2.0" font="bold 8.0pt Tahoma" halign="left">
     <WsAnnotation name="wsAnnotation" value="2,2,8"/>
-    <ValueBinding ord="station:|slot:/Drivers/BacnetNetwork/enabled">
+    <ValueBinding ord="station:|slot:/Drivers/NiagaraNetwork/enabled">
       <IBooleanToSimple name="background">
         <Brush name="trueValue" value="lime"/>
         <Brush name="falseValue" value="red"/>
       </IBooleanToSimple>
     </ValueBinding>
+  </BoundLabel>
+
+  <BoundLabel layout="48.0,25.0,4.0,2.0" font="bold 8.0pt Tahoma" background="yellow" halign="left">
+    <WsAnnotation name="wsAnnotation" value="2,2,8"/>
+  </BoundLabel>
+
+  <BoundLabel layout="53.0,25.0,4.0,2.0" font="bold 8.0pt Tahoma" background="lime" halign="left">
+    <WsAnnotation name="wsAnnotation" value="2,2,8"/>
   </BoundLabel>
 
 </CanvasPane>
