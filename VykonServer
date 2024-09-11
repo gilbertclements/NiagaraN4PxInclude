@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Niagara Presentation XML -->
+<!-- Vykon N4 Server Px Include, Gil Clements, 29Aug24 -->
+<!-- shows Server N4 version, station name, ip, system time, memory, Disk Space -->
 <px version="1.0" media="workbench:WbPxMedia">
 <import>
   <module name="baja"/>
@@ -20,28 +21,28 @@
     <ToolTipBinding ord="station:|slot:/Services/PlatformServices/SystemService" toolTip="N4 Version: %niagaraVersion%&#xa;%systemTime%&#xa;%stationName%: %host%&#xa;Memory %freePhysicalMemory% KB Free of %totalPhysicalMemory% KB Total&#xa;C:/ %filesystemAttributes.C$3a$5c.freeSpace% KB Free of %filesystemAttributes.C$3a$5c.totalSpace% KB Total&#xa;"/>
   </BoundLabel>
 
-  <BoundLabel layout="33.0,15.0,4.0,2.0" font="bold 8.0pt Tahoma" foreground="white" halign="left">
+  <BoundLabel layout="33.0,13.0,4.0,2.0" font="bold 8.0pt Tahoma" foreground="white" halign="left">
     <WsAnnotation name="wsAnnotation" value="2,2,8"/>
     <ValueBinding ord="station:|slot:/Services/PlatformServices/SystemService/freePhysicalMemory">
       <INumericToSimple name="background" map="gx:Brush 1000000.0:4000000.0=#4040ff;4000000.0:8000000.0=lime;8000000.0:1.2E7=yellow;1.2E7:1.6E7=red;default=lime;"/>
     </ValueBinding>
   </BoundLabel>
 
-  <BoundLabel layout="38.0,15.0,4.0,2.0" font="bold 8.0pt Tahoma" foreground="white" halign="left">
+  <BoundLabel layout="38.0,13.0,4.0,2.0" font="bold 8.0pt Tahoma" foreground="white" halign="left">
     <WsAnnotation name="wsAnnotation" value="2,2,8"/>
     <ValueBinding ord="station:|slot:/Services/PlatformServices/SystemService/currentCpuUsage">
       <INumericToSimple name="background" map="gx:Brush 1.0:4.0=#4040ff;4.0:8.0=lime;8.0:12.0=yellow;12.0:16.0=red;default=lime;"/>
     </ValueBinding>
   </BoundLabel>
 
-  <BoundLabel layout="43.0,15.0,4.0,2.0" font="bold 8.0pt Tahoma" foreground="white" halign="left">
+  <BoundLabel layout="43.0,13.0,4.0,2.0" font="bold 8.0pt Tahoma" foreground="white" halign="left">
     <WsAnnotation name="wsAnnotation" value="2,2,8"/>
     <ValueBinding ord="station:|slot:/Services/PlatformServices/SystemService/overallCpuUsage">
       <INumericToSimple name="background" map="gx:Brush 1.0:4.0=#4040ff;4.0:8.0=lime;8.0:12.0=yellow;12.0:16.0=red;default=lime;"/>
     </ValueBinding>
   </BoundLabel>
 
-  <BoundLabel layout="48.0,15.0,4.0,2.0" font="bold 8.0pt Tahoma" foreground="white" halign="left">
+  <BoundLabel layout="48.0,13.0,4.0,2.0" font="bold 8.0pt Tahoma" foreground="white" halign="left">
     <WsAnnotation name="wsAnnotation" value="2,2,8"/>
     <ValueBinding ord="station:|slot:/Services/PlatformServices/SystemService/filesystemAttributes/C$3a$5c/freeSpace">
       <INumericToSimple name="background" map="gx:Brush 1000000.0:1.0E7=#4040ff;1.0E7:2.0E7=lime;2.0E7:3.2E8=yellow;3.2E8:4.6E8=red;default=lime;"/>
@@ -88,7 +89,7 @@
     </ValueBinding>
   </BoundLabel>
 
-  <BoundLabel layout="20.0,15.0,4.0,2.0" font="bold 8.0pt Tahoma" foreground="white" halign="left">
+  <BoundLabel layout="20.0,13.0,4.0,2.0" font="bold 8.0pt Tahoma" foreground="white" halign="left">
     <WsAnnotation name="wsAnnotation" value="2,2,8"/>
     <ValueBinding ord="station:|slot:/Drivers/NiagaraNetwork/enabled">
       <IBooleanToSimple name="background">
